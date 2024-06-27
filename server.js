@@ -1,7 +1,7 @@
 const express= require('express'); 
 const app= express(); 
 const db= require('./db'); 
-
+require('dotenv').config(); 
 
 app.get('/', function(req, res){
     res.send('Server Hotel is running now'); 
@@ -16,6 +16,8 @@ app.use('/person', personRoute);
 const menuRoute= require('./routes/menuRoute');  
 app.use('/menu', menuRoute); 
 
-app.listen(5000, ()=>{
+const PORT= process.env.PORT || 5000; 
+
+app.listen(PORT, ()=>{
     console.log('Server running...');
 }); 
